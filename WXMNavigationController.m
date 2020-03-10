@@ -162,6 +162,7 @@ UIColor* blendColor(UIColor *from, UIColor *to, float percent) {
                     animated:(BOOL)animated {
     WXMNavigationController *nav = (WXMNavigationController *) navigationController;
     nav.transitional = YES;
+    nav.interactivePopGestureRecognizer.enabled = (self.nav.topViewController.wn_swipeBackEnabled);
           
     /** 顶部位置适配 */
     if (!viewController.wn_extendedLayoutDidSet) {
@@ -190,7 +191,7 @@ UIColor* blendColor(UIColor *from, UIColor *to, float percent) {
     
     WXMNavigationController *nav = (WXMNavigationController *) navigationController;
     nav.transitional = NO;
-    nav.interactivePopGestureRecognizer.enabled = (nav.viewControllers.count > 1 && self.nav.topViewController.wn_swipeBackEnabled);
+    if (nav.viewControllers.count <= 1) nav.interactivePopGestureRecognizer.enabled = NO;
     
     if (!animated) {
         [nav updateNavigationBarForViewController:viewController];
