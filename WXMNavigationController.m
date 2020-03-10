@@ -142,7 +142,7 @@ UIColor* blendColor(UIColor *from, UIColor *to, float percent) {
 - (void)updateNavigationBarAnimatedForViewController:(UIViewController *)vc;
 - (void)showFakeBarFrom:(UIViewController *)from to:(UIViewController *)to;
 - (void)clearFake;
-- (void)resetSubviewsInNavBar:(UINavigationBar *)navBar;
+/** - (void)resetSubviewsInNavBar:(UINavigationBar *)navBar; */
 - (UIGestureRecognizer *)superInteractivePopGestureRecognizer;
 @end
 
@@ -282,17 +282,6 @@ UIColor* blendColor(UIColor *from, UIColor *to, float percent) {
     if (!coordinator) [self updateNavigationBarForViewController:self.topViewController];
 }
 
-/** 重置一下导航栏上面的视图透明度 */
-//- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
-//    if (self.viewControllers.count > 1 && self.topViewController.navigationItem == item ) {
-//        if (!self.topViewController.wn_clickBackEnabled) {
-//            [self resetSubviewsInNavBar:self.navigationBar];
-//            return NO;
-//        }
-//    }
-//    return [super navigationBar:navigationBar shouldPopItem:item];
-//}
-
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated {
     self.poppingViewController = self.topViewController;
     return [super popViewControllerAnimated:animated];
@@ -307,6 +296,17 @@ UIColor* blendColor(UIColor *from, UIColor *to, float percent) {
     self.poppingViewController = self.topViewController;
     return [super popToRootViewControllerAnimated:animated];
 }
+
+/** 重置一下导航栏上面的视图透明度 */
+//- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
+//    if (self.viewControllers.count > 1 && self.topViewController.navigationItem == item ) {
+//        if (!self.topViewController.wn_clickBackEnabled) {
+//            [self resetSubviewsInNavBar:self.navigationBar];
+//            return NO;
+//        }
+//    }
+//    return [super navigationBar:navigationBar shouldPopItem:item];
+//}
 
 /** 重置导航栏上的view的透明度 */
 //- (void)resetSubviewsInNavBar:(UINavigationBar *)navBar {

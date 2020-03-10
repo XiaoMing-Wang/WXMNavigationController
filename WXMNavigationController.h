@@ -17,7 +17,3 @@
 @interface UINavigationController (UINavigationBar) <UINavigationBarDelegate>
 @end
 
-/** 导航代理 */
-@protocol WXMNavigationTransitionProtocol <NSObject>
-- (void)handleNavigationTransition:(UIScreenEdgePanGestureRecognizer *)pan;
-@end
